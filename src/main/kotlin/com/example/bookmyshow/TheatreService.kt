@@ -6,11 +6,11 @@ class TheatreService(private val theatreRepository: TheatreRepository) {
         val AVAILABLE_SEATS = 100
     }
 
-    fun bookNext(): Int {
-        val lastSavedTicket = theatreRepository.lastSaved()
+    fun bookNext(showTime: ShowTime): Int {
+        val lastSavedTicket = theatreRepository.lastSaved(showTime)
         if(lastSavedTicket == AVAILABLE_SEATS)
             throw NoTicketAvailableException()
-        return theatreRepository.save()
+        return theatreRepository.save(showTime)
     }
 }
 
