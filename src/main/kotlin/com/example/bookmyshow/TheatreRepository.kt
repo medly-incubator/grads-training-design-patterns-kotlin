@@ -1,16 +1,14 @@
 package com.example.bookmyshow
 
 class TheatreRepository {
-    companion object {
-        val AVAILABLE_SEATS = 100
+    private var lastSavedTicket: Int = 0
+    fun save(): Int {
+        lastSavedTicket+=1
+        return lastSavedTicket
     }
 
-    var lastSavedTicket: Int = 0
-    fun save(): Int {
-        if(lastSavedTicket == AVAILABLE_SEATS)
-            throw NoTicketAvailableException()
-        lastSavedTicket++;
-        return lastSavedTicket;
+    fun lastSaved(): Int {
+        return lastSavedTicket
     }
 
 }
